@@ -293,7 +293,6 @@ makeMove arr isMe depth =
     val = List.foldl folderMax (0, -boardSize) indexedWeights
     index = Tuple.first val
     color = Array.get index (Array.fromList moves)
-    v = Debug.log "weights" weights
   in
     case color of
       Just c -> c
