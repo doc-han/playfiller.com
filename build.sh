@@ -1,1 +1,0 @@
-elm make ./src/index.elm --output ./output/index.html

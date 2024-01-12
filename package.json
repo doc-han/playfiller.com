@@ -1,0 +1,15 @@
+{
+  "name": "playfiller.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/doc-han/playfiller.com.git",
+  "author": "doc-han <yahyafarhan48@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "scripts": {
+    "build": "elm make ./src/index.elm --output ./output/index.html",
+    "deploy": "yarn build && gh-pages -d output"
+  }
+}
