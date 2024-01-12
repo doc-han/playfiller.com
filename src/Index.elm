@@ -172,9 +172,9 @@ correctBoard arr =
     isInNeighbor clx nlist = List.member clx nlist 
     getNeighbors index marr = 
       (if (isValid (index-rowGridSize)) then [getCellColor (index-rowGridSize) marr] else []) ++
-      (if (isValid (index+rowGridSize)) then [getCellColor (index+rowGridSize) marr] else []) ++
-      (if (isValid (index-1)) && (index-1 /= (rowGridSize-1)) then [getCellColor (index-1) marr] else []) ++
-      (if (isValid (index+1)) && (index+1 /= 0) then [getCellColor (index+1) marr] else [])
+      (if (isValid (index + rowGridSize)) then [getCellColor (index + rowGridSize) marr] else []) ++
+      (if (isValid (index-1)) && (index-1 /= (rowGridSize - 1)) then [getCellColor (index-1) marr] else []) ++
+      (if (isValid (index + 1)) && (index + 1 /= 0) then [getCellColor (index + 1) marr] else [])
     arrWIndex = List.indexedMap Tuple.pair arr
     mapFunc (xi, xc) acc =
       let
@@ -214,7 +214,7 @@ getPlayerSquares index playerColor arr isInv =
     let
         isValidIndex i = i >= 0 && i < boardSize
         getNeighbors i = 
-            [i - rowGridSize, i + rowGridSize ] ++ (if modBy rowGridSize (i+1) == 0 then [] else [i+1]) ++ (if modBy rowGridSize (i-1) == (rowGridSize-1) then [] else [i-1])
+            [i - rowGridSize, i + rowGridSize ] ++ (if modBy rowGridSize (i+1) == 0 then [] else [i+1]) ++ (if modBy rowGridSize (i - 1) == (rowGridSize - 1) then [] else [i - 1])
             |> List.filter (\neighborIndex -> isValidIndex neighborIndex && getCellColor neighborIndex arr == playerColor)
 
         initialQueue = [index]
@@ -314,7 +314,7 @@ evalMove arr is2 depth alpha beta =
         if acc.xalpha >= acc.xbeta then acc
         else
           let
-            weight = evalMove (makeDummyMove index color xolor arr is2) (not is2) (depth-1) acc.xalpha acc.xbeta
+            weight = evalMove (makeDummyMove index color xolor arr is2) (not is2) (depth - 1) acc.xalpha acc.xbeta
             newAlpha = if is2 then max weight acc.xalpha else acc.xalpha
             newBeta = if is2 then acc.xbeta else min weight acc.xbeta
             newWeight = if is2 then max weight acc.xweight else min weight acc.xweight
