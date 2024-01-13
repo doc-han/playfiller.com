@@ -9,7 +9,8 @@
     "gh-pages": "^6.1.1"
   },
   "scripts": {
-    "build": "elm make ./src/index.elm --output ./output/index.html --optimize",
-    "deploy": "yarn build && gh-pages -d output"
+    "build": "elm make ./src/index.elm --output ./output/index.html --optimize && yarn cp-files",
+    "cp-files": "echo playfiller.com >> ./output/CNAME && cp ./assets/icon.png ./output",
+    "deploy": "gh-pages -d output"
   }
 }
